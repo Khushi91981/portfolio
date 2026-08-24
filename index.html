@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isha Sharma — WordPress Developer | 5+ Years Experience</title>
+    <meta name="description" content="Portfolio of Isha Sharma — WordPress Developer with 5+ years of experience in custom WordPress development, theme & plugin development, WooCommerce, API integrations, and performance optimization.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════
+   VARIABLES
+   ══════════════════════════════════════ */
+:root {
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --sidebar-w: 360px;
+    --ease: cubic-bezier(.4,0,.2,1);
+    --fast: .22s;
+    --med: .38s;
+    --slow: .55s;
+    --r-xs: 4px;
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 20px;
+    --r-xl: 28px;
+}
+
+[data-theme="dark"] {
+    --bg-body: #07090C;
+    --bg-sidebar: #0C0F14;
+    --bg-card: #11151C;
+    --bg-card-2: #161B24;
+    --bg-card-hover: #181E28;
+    --bg-elevated: #1C2230;
+    --accent: #D4A24C;
+    --accent-soft: #E8C374;
+    --accent-dim: rgba(212,162,76,.07);
+    --accent-dim-2: rgba(212,162,76,.12);
+    --accent-border: rgba(212,162,76,.18);
+    --text-1: #F0EDE6;
+    --text-2: #9EA7B3;
+    --text-3: #5E6878;
+    --border: rgba(255,255,255,.06);
+    --border-2: rgba(255,255,255,.1);
+    --live: #34D399;
+    --shadow-card: 0 2px 12px rgba(0,0,0,.35);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,.45);
+    --glass: rgba(12,15,20,.85);
+}
+
+[data-theme="light"] {
+    --bg-body: #F4F1EA;
+    --bg-sidebar: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-card-2: #F9F7F2;
+    --bg-card-hover: #F5F2EB;
+    --bg-elevated: #EDE9E0;
+    --accent: #9E6B1F;
+    --accent-soft: #C08A36;
+    --accent-dim: rgba(158,107,31,.05);
+    --accent-dim-2: rgba(158,107,31,.1);
+    --accent-border: rgba(158,107,31,.2);
+    --text-1: #17202A;
+    --text-2: #5A6474;
+    --text-3: #8C95A1;
+    --border: rgba(0,0,0,.07);
+    --border-2: rgba(0,0,0,.12);
+    --live: #16A34A;
+    --shadow-card: 0 2px 12px rgba(0,0,0,.06);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,.1);
+    --glass: rgba(255,255,255,.85);
+}
+
+/* ══════════════════════════════════════
+   RESET
+   ══════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+    font-family:var(--font-body);
+    background:var(--bg-body);
+    color:var(--text-1);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    transition:background var(--med) var(--ease), color var(--med) var(--ease);
+}
+a{color:inherit;text-decoration:none}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
+img{max-width:100%;display:block}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-head);font-weight:700;line-height:1.15}
+ul,ol{list-style:none}
+
+/* Noise overlay */
+body::after{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:10000;
+    opacity:.025;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:150px;
+}
+
+/* ══════════════════════════════════════
+   LAYOUT
+   ══════════════════════════════════════ */
+.page{display:flex;min-height:100vh}
+
+/* ══════════════════════════════════════
+   SIDEBAR
+   ══════════════════════════════════════ */
+.sidebar{
+    position:fixed;top:0;left:0;
+    width:var(--sidebar-w);height:100vh;
+    overflow-y:auto;
+    background:var(--bg-sidebar);
+    border-right:1px solid var(--border);
+    display:flex;flex-direction:column;
+    padding:44px 32px 32px;
+    z-index:100;
+    transition:background var(--med) var(--ease), border-color var(--med) var(--ease), transform var(--med) var(--ease);
+    scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+}
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:4px}
+
+/* Avatar placeholder */
+.avatar{
+    width:72px;height:72px;border-radius:50%;
+    background:linear-gradient(135deg, var(--accent), var(--accent-soft));
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-head);font-size:1.6rem;font-weight:800;
+    color:#0B0F14;margin-bottom:20px;
+    box-shadow:0 0 0 3px var(--bg-sidebar), 0 0 0 5px var(--accent-border);
+}
+
+.s-name{
+    font-family:var(--font-head);font-size:2rem;font-weight:800;
+    letter-spacing:-.03em;line-height:1;margin-bottom:4px;
+}
+.s-name .dot{color:var(--accent)}
+.s-role{
+    font-size:.72rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.18em;
+    color:var(--accent);margin-bottom:18px;
+}
+.s-intro{
+    font-size:.8rem;line-height:1.65;color:var(--text-2);
+    margin-bottom:24px;padding-bottom:24px;
+    border-bottom:1px solid var(--border);
+}
+
+/* Stats */
+.s-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.stat{
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r-sm);padding:12px;text-align:center;
+    transition:border-color var(--fast) var(--ease);
+}
+.stat:hover{border-color:var(--accent-border)}
+.stat-n{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--accent);display:block}
+.stat-l{font-size:.64rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+
+/* Sidebar actions */
+.s-actions{display:flex;flex-direction:column;gap:7px;margin-bottom:24px}
+.s-btn{
+    display:flex;align-items:center;gap:10px;
+    padding:10px 14px;border-radius:var(--r-sm);
+    border:1px solid var(--border);background:var(--bg-card);
+    font-size:.8rem;font-weight:500;color:var(--text-1);
+    transition:all var(--fast) var(--ease);
+    min-height:44px;
+}
+.s-btn svg{width:16px;height:16px;flex-shrink:0;color:var(--text-3);transition:color var(--fast)}
+.s-btn:hover,.s-btn:focus-visible{border-color:var(--accent-border);background:var(--accent-dim);color:var(--accent)}
+.s-btn:hover svg,.s-btn:focus-visible svg{color:var(--accent)}
+.s-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.s-btn--fill{background:var(--accent);border-color:var(--accent);color:#0B0F14;font-weight:600}
+.s-btn--fill svg{color:#0B0F14}
+.s-btn--fill:hover{background:var(--accent-soft);border-color:var(--accent-soft);color:#0B0F14}
+
+/* Contact rows */
+.s-contact{
+    border-top:1px solid var(--border);padding-top:18px;margin-bottom:18px;
+    display:flex;flex-direction:column;gap:10px;
+}
+.s-contact-row{
+    display:flex;align-items:center;gap:10px;
+    font-size:.76rem;color:var(--text-2);word-break:break-all;
+}
+.s-contact-row svg{width:14px;height:14px;flex-shrink:0;color:var(--text-3)}
+.s-contact-row a{transition:color var(--fast)}
+.s-contact-row a:hover{color:var(--accent)}
+
+/* Theme toggle */
+.theme-wrap{margin-top:auto;padding-top:18px;border-top:1px solid var(--border)}
+.theme-btn{
+    display:flex;align-items:center;justify-content:space-between;
+    width:100%;padding:10px 14px;border-radius:var(--r-sm);
+    border:1px solid var(--border);background:var(--bg-card);
+    font-size:.78rem;font-weight:500;color:var(--text-2);
+    transition:all var(--fast) var(--ease);min-height:44px;
+}
+.theme-btn:hover{border-color:var(--accent-border);color:var(--text-1)}
+.theme-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.theme-btn svg{width:18px;height:18px;transition:transform var(--med) var(--ease)}
+.theme-btn:hover svg{transform:rotate(25deg)}
+
+/* ══════════════════════════════════════
+   MAIN CONTENT
+   ══════════════════════════════════════ */
+.main{margin-left:var(--sidebar-w);flex:1;min-width:0}
+
+/* ── TICKER ── */
+.ticker{
+    position:sticky;top:0;z-index:50;
+    background:var(--glass);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    height:44px;overflow:hidden;
+    transition:background var(--med), border-color var(--med);
+}
+.ticker-track{
+    display:flex;align-items:center;height:100%;
+    animation:scroll-ticker 50s linear infinite;
+    width:max-content;
+}
+.ticker-item{
+    display:flex;align-items:center;gap:8px;padding:0 20px;
+    font-family:var(--font-head);font-size:.7rem;font-weight:600;
+    color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;
+    white-space:nowrap;user-select:none;
+}
+.ticker-dot{width:3px;height:3px;border-radius:50%;background:var(--accent);opacity:.5}
+@keyframes scroll-ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){
+    .ticker-track{animation:none}
+    .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* ── SECTIONS ── */
+.sec{padding:72px 56px;border-bottom:1px solid var(--border);transition:border-color var(--med)}
+.sec:last-child{border-bottom:none}
+.sec-label{
+    font-family:var(--font-head);font-size:.68rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.22em;
+    color:var(--accent);margin-bottom:6px;
+    display:flex;align-items:center;gap:8px;
+}
+.sec-label::before{
+    content:'';width:18px;height:2px;background:var(--accent);border-radius:2px;
+}
+.sec-title{font-size:1.9rem;letter-spacing:-.02em;margin-bottom:10px}
+.sec-desc{font-size:.88rem;color:var(--text-2);max-width:600px;line-height:1.65;margin-bottom:44px}
+
+/* ── TECH STACK ── */
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.tech-card{
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r-md);padding:22px;
+    transition:all var(--fast) var(--ease);
+    position:relative;overflow:hidden;
+}
+.tech-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+    opacity:0;transition:opacity var(--fast);
+}
+.tech-card:hover{border-color:var(--accent-border);box-shadow:var(--shadow-card);transform:translateY(-2px)}
+.tech-card:hover::before{opacity:1}
+.tech-card h4{
+    font-family:var(--font-head);font-size:.72rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.14em;color:var(--accent);
+    margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);
+}
+.tech-pills{display:flex;flex-wrap:wrap;gap:5px}
+.tech-pill{
+    font-size:.72rem;font-weight:500;padding:4px 10px;
+    border-radius:var(--r-xs);background:var(--accent-dim);color:var(--text-2);
+    border:1px solid transparent;transition:all var(--fast);
+}
+.tech-card:hover .tech-pill{color:var(--accent);border-color:var(--accent-border)}
+
+/* ── PORTFOLIO ── */
+.port-note{
+    font-size:.82rem;color:var(--text-2);font-style:italic;
+    line-height:1.6;margin-bottom:28px;
+    padding:16px 20px;background:var(--accent-dim);
+    border-left:3px solid var(--accent);
+    border-radius:0 var(--r-sm) var(--r-sm) 0;
+}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.f-btn{
+    font-family:var(--font-head);font-size:.75rem;font-weight:600;
+    padding:8px 20px;border-radius:100px;
+    border:1px solid var(--border);background:transparent;
+    color:var(--text-2);transition:all var(--fast) var(--ease);
+    min-height:44px;display:flex;align-items:center;gap:6px;
+}
+.f-btn:hover,.f-btn:focus-visible{border-color:var(--accent-border);color:var(--accent)}
+.f-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.f-btn.on{background:var(--accent);border-color:var(--accent);color:#0B0F14}
+.f-cnt{font-size:.65rem;opacity:.6}
+
+/* Project grid */
+.p-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+
+.p-card{
+    position:relative;display:flex;flex-direction:column;
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r-md);padding:0;
+    transition:all var(--med) var(--ease);
+    cursor:pointer;text-decoration:none;color:inherit;
+    overflow:hidden;
+}
+.p-card-inner{padding:24px 24px 20px;display:flex;flex-direction:column;flex:1}
+
+/* top accent line on hover */
+.p-card::after{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:var(--accent);transform:scaleX(0);transform-origin:left;
+    transition:transform var(--med) var(--ease);
+}
+.p-card:hover::after,.p-card:focus-visible::after{transform:scaleX(1)}
+.p-card:hover{
+    border-color:var(--accent-border);background:var(--bg-card-hover);
+    box-shadow:var(--shadow-hover);transform:translateY(-3px);
+}
+.p-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.p-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.p-platform{
+    font-family:var(--font-head);font-size:.65rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.1em;
+    color:var(--accent);padding:4px 10px;border-radius:var(--r-xs);
+    background:var(--accent-dim-2);border:1px solid var(--accent-border);
+}
+.p-live{
+    display:flex;align-items:center;gap:5px;
+    font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--live);
+}
+.p-live-dot{
+    width:6px;height:6px;border-radius:50%;background:var(--live);
+    animation:pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{
+    0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.4)}
+    50%{box-shadow:0 0 0 5px rgba(52,211,153,0)}
+}
+
+.p-name{
+    font-family:var(--font-head);font-size:1.1rem;font-weight:700;
+    color:var(--text-1);margin-bottom:8px;
+    transition:color var(--fast);letter-spacing:-.01em;
+}
+.p-card:hover .p-name{color:var(--accent)}
+
+.p-desc{font-size:.8rem;line-height:1.55;color:var(--text-2);margin-bottom:14px;flex:1}
+
+.p-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:16px}
+.p-tag{
+    font-size:.67rem;font-weight:500;padding:3px 8px;
+    border-radius:3px;background:var(--accent-dim);
+    color:var(--text-3);transition:color var(--fast);
+}
+.p-card:hover .p-tag{color:var(--accent)}
+
+.p-foot{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;border-top:1px solid var(--border);
+    background:var(--accent-dim);
+    transition:background var(--fast);
+}
+.p-card:hover .p-foot{background:var(--accent-dim-2)}
+
+.p-url{
+    font-size:.72rem;font-weight:500;color:var(--text-3);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px;
+    transition:color var(--fast);
+}
+.p-card:hover .p-url{color:var(--accent)}
+
+.p-arrow{
+    width:30px;height:30px;border-radius:50%;
+    background:var(--bg-card-2);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    transition:all var(--fast) var(--ease);flex-shrink:0;
+}
+.p-arrow svg{width:13px;height:13px;color:var(--text-3);transition:all var(--fast) var(--ease)}
+.p-card:hover .p-arrow{background:var(--accent);border-color:var(--accent)}
+.p-card:hover .p-arrow svg{color:#0B0F14;transform:rotate(45deg)}
+
+.p-card.hide{display:none}
+
+/* ── EXPERIENCE ── */
+.exp-list{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+.exp-list::before{
+    content:'';
+    position:absolute;
+    left:19px;
+    top:24px;
+    bottom:24px;
+    width:1px;
+    background:linear-gradient(
+        to bottom,
+        var(--accent-border),
+        var(--border-2),
+        transparent
+    );
+}
+.exp{
+    position:relative;
+    padding-left:58px;
+}
+.exp-marker{
+    position:absolute;
+    left:0;
+    top:22px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bg-body);
+    border:1px solid var(--accent-border);
+    color:var(--accent);
+    font-family:var(--font-head);
+    font-size:.58rem;
+    font-weight:800;
+    letter-spacing:.05em;
+    z-index:2;
+    transition:all var(--fast) var(--ease);
+}
+.exp:first-child .exp-marker{
+    background:var(--accent);
+    color:#0B0F14;
+    border-color:var(--accent);
+}
+.exp-content{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--r-md);
+    padding:22px 24px 24px;
+    transition:all var(--fast) var(--ease);
+}
+.exp:hover .exp-content{
+    border-color:var(--accent-border);
+    background:var(--bg-card-hover);
+    box-shadow:var(--shadow-card);
+    transform:translateX(3px);
+}
+.exp:hover .exp-marker{
+    border-color:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-dim);
+}
+.exp-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+}
+.exp-company{
+    font-family:var(--font-head);
+    font-size:1.02rem;
+    font-weight:800;
+    color:var(--text-1);
+    margin-bottom:4px;
+    letter-spacing:-.01em;
+}
+.exp-role{
+    font-size:.78rem;
+    font-weight:600;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+}
+.exp-index{
+    font-family:var(--font-head);
+    font-size:.62rem;
+    font-weight:700;
+    color:var(--text-3);
+    letter-spacing:.1em;
+}
+.exp-meta{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:14px;
+    margin-top:12px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--border);
+    font-size:.7rem;
+    color:var(--text-3);
+}
+.exp-meta span{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+.exp-meta svg{
+    width:13px;
+    height:13px;
+    color:var(--text-3);
+}
+.exp-work{
+    margin-top:16px;
+}
+.exp-work-label{
+    font-family:var(--font-head);
+    font-size:.62rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--text-3);
+    margin-bottom:10px;
+}
+.exp-work ul{
+    display:grid;
+    gap:8px;
+}
+.exp-work li{
+    position:relative;
+    padding-left:16px;
+    font-size:.78rem;
+    line-height:1.6;
+    color:var(--text-2);
+}
+.exp-work li::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:.62em;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--accent);
+}
+
+ /* ── ABOUT ── */
+.about-body{width:100%}
+.about-body p{font-size:.88rem;line-height:1.7;color:var(--text-2);margin-bottom:20px}
+.about-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.about-pill{
+    font-size:.73rem;font-weight:500;padding:5px 14px;
+    border-radius:100px;background:var(--accent-dim);
+    color:var(--accent);border:1px solid var(--accent-border);
+}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.edu-card{
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r-md);padding:24px;
+    transition:border-color var(--fast);position:relative;overflow:hidden;
+}
+.edu-card::before{
+    content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+    background:var(--accent);transform:scaleX(0);
+    transition:transform var(--med) var(--ease);transform-origin:left;
+}
+.edu-card:hover{border-color:var(--accent-border)}
+.edu-card:hover::before{transform:scaleX(1)}
+.edu-deg{font-family:var(--font-head);font-size:.95rem;font-weight:700;margin-bottom:6px}
+.edu-school{font-size:.82rem;color:var(--accent);font-weight:500;margin-bottom:8px}
+.edu-yr{font-size:.74rem;color:var(--text-3)}
+
+/* ── CONTACT CTA ── */
+.cta-sec{text-align:center;padding:88px 56px;position:relative;overflow:hidden}
+.cta-sec::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at center,var(--accent-dim-2) 0%,transparent 70%);
+    pointer-events:none;
+}
+.cta-title{font-size:2.4rem;font-weight:800;letter-spacing:-.03em;margin-bottom:14px;position:relative}
+.cta-title span{color:var(--accent)}
+.cta-sub{font-size:.9rem;color:var(--text-2);margin-bottom:36px;max-width:460px;margin-inline:auto;line-height:1.6;position:relative}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;position:relative}
+.cta-a{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 30px;border-radius:var(--r-sm);
+    font-family:var(--font-head);font-size:.84rem;font-weight:600;
+    transition:all var(--fast) var(--ease);min-height:48px;
+}
+.cta-a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cta-a svg{width:16px;height:16px}
+.cta-fill{background:var(--accent);color:#0B0F14}
+.cta-fill:hover{background:var(--accent-soft);transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.cta-ghost{border:1px solid var(--border-2);color:var(--text-1)}
+.cta-ghost:hover{border-color:var(--accent-border);color:var(--accent)}
+
+/* ── FOOTER ── */
+.foot{padding:22px 56px;border-top:1px solid var(--border);text-align:center;font-size:.72rem;color:var(--text-3)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:1;transform:none;transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.reveal.show{opacity:1;transform:translateY(0)}
+
+/* ── MOBILE HEADER ── */
+.mob-head{
+    display:none;position:sticky;top:0;z-index:200;
+    background:var(--glass);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:12px 20px;align-items:center;justify-content:space-between;
+    transition:background var(--med), border-color var(--med);
+}
+.mob-head .s-name{font-size:1.2rem;margin:0}
+.mob-btn{
+    width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+    border-radius:var(--r-sm);border:1px solid var(--border);color:var(--text-1);
+}
+.mob-btn svg{width:20px;height:20px}
+
+.overlay{
+    display:none;position:fixed;inset:0;
+    background:rgba(0,0,0,.6);z-index:99;
+    opacity:0;transition:opacity var(--med);
+}
+.overlay.on{display:block;opacity:1}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:1280px){
+    :root{--sidebar-w:320px}
+    .sec{padding:56px 40px}
+    .cta-sec{padding:72px 40px}
+    .foot{padding:20px 40px}
+}
+@media(max-width:1024px){
+    .p-grid{gap:12px}
+    .tech-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+}
+@media(max-width:900px){
+    .mob-head{display:flex}
+    .sidebar{
+        transform:translateX(-100%);width:320px;
+        transition:transform var(--med) var(--ease), background var(--med);
+    }
+    .sidebar.open{transform:translateX(0)}
+    .main{margin-left:0}
+    .sec{padding:40px 20px}
+    .cta-sec{padding:60px 20px}
+    .foot{padding:18px 20px}
+    .p-grid{grid-template-columns:1fr}
+    .cta-title{font-size:1.7rem}
+    .sec-title{font-size:1.45rem}
+}
+@media(max-width:600px){
+    .tech-grid{grid-template-columns:1fr}
+    .edu-grid{grid-template-columns:1fr}
+    .filters{gap:5px}
+    .f-btn{font-size:.7rem;padding:6px 14px}
+    .exp{padding-left:46px}
+    .exp-list::before{left:15px}
+    .exp-marker{
+        width:32px;
+        height:32px;
+        top:18px;
+        font-size:.52rem;
+    }
+    .exp-content{padding:18px}
+    .exp-head{gap:10px}
+    .exp-index{display:none}
+    .exp-company{font-size:.92rem}
+    .exp-role{font-size:.68rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ MOBILE HEADER ═══ -->
+<header class="mob-head" id="mobHead">
+    <div class="s-name">Isha<span class="dot">.</span></div>
+    <button class="mob-btn" id="mobBtn" aria-label="Open navigation menu">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+    </button>
+</header>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="page">
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar" id="sidebar" role="complementary">
+    <div class="avatar" aria-hidden="true">IS</div>
+
+    <div class="s-name">Isha<br>Sharma<span class="dot">.</span></div>
+    <div class="s-role">WordPress Developer</div>
+
+    <p class="s-intro">WordPress Developer with 5+ years of experience in custom WordPress development, theme and plugin development, CMS platforms, API integrations, responsive development, SEO and website optimization.</p>
+
+    <div class="s-stats">
+        <div class="stat"><span class="stat-n">5+</span><span class="stat-l">Years Exp</span></div>
+        <div class="stat"><span class="stat-n">7+</span><span class="stat-l">Companies</span></div>
+        <div class="stat"><span class="stat-n">20+</span><span class="stat-l">Core Skills</span></div>
+        <div class="stat"><span class="stat-n">17+</span><span class="stat-l">Projects</span></div>
+    </div>
+
+    <div class="s-actions">
+        <a href="https://www.linkedin.com/in/isha-sharma-a201ba11a/" target="_blank" rel="noopener noreferrer" class="s-btn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn Profile
+        </a>
+        <a href="resume.pdf" download class="s-btn s-btn--fill">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            Download Resume
+        </a>
+    </div>
+
+    <div class="s-contact">
+        <div class="s-contact-row">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            <a href="mailto:ishasharma91981@gmail.com">ishasharma91981@gmail.com</a>
+        </div>
+        <div class="s-contact-row">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <a href="tel:+918560970064">+91 8560970064</a>
+        </div>
+        <div class="s-contact-row">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            Vadodara, Gujarat, India
+        </div>
+    </div>
+
+    <div class="theme-wrap">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark/light mode">
+            <span id="themeLabel">Dark Mode</span>
+            <svg id="themeIcon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+        </button>
+    </div>
+</aside>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main" id="main">
+
+<!-- Ticker -->
+<div class="ticker" role="marquee" aria-label="Skills marquee">
+    <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- Tech Stack -->
+<section class="sec" id="stack">
+    <div class="reveal">
+        <div class="sec-label">Expertise</div>
+        <h2 class="sec-title">Tech Stack</h2>
+        <p class="sec-desc">Technologies, tools and platforms I work with daily to deliver high-quality WordPress solutions.</p>
+    </div>
+    <div class="tech-grid" id="techGrid"></div>
+</section>
+
+<!-- Selected Work -->
+<section class="sec" id="work">
+    <div class="reveal">
+        <div class="sec-label">Portfolio</div>
+        <h2 class="sec-title">Selected Work</h2>
+        <p class="sec-desc">A curated selection of projects I've worked on across WordPress, WooCommerce and Shopify platforms.</p>
+    </div>
+    <p class="port-note reveal">Here are some of the projects I'm able to share publicly. I've also worked on several private and NDA-based projects — please feel free to reach out if you'd like to see more.</p>
+    <div class="filters reveal" id="filters" role="group" aria-label="Filter projects"></div>
+    <div class="p-grid" id="pGrid"></div>
+</section>
+
+<!-- Experience -->
+<section class="sec" id="experience">
+    <div class="reveal">
+        <div class="sec-label">Career</div>
+        <h2 class="sec-title">Professional Experience</h2>
+        <p class="sec-desc">My journey across WordPress development, web development and software engineering roles.</p>
+    </div>
+    <div class="exp-list reveal" id="expList"></div>
+</section>
+
+<!-- About -->
+<section class="sec" id="about">
+    <div class="reveal">
+        <div class="sec-label">About</div>
+        <h2 class="sec-title">About Me</h2>
+    </div>
+    <div class="about-body reveal">
+        <p>I'm a WordPress Developer based in Vadodara, Gujarat with over 5 years of professional experience building, customizing and maintaining WordPress websites. I specialize in creating custom solutions that go beyond off-the-shelf themes — from fully custom themes and plugins to complex WooCommerce stores and API integrations.</p>
+        <p>My work spans CMS development, frontend implementation, performance optimization, SEO, website migrations, troubleshooting, deployment and ongoing maintenance. I'm equally comfortable working with page builders like Elementor, Divi and WPBakery as I am writing custom PHP, JavaScript and CSS.</p>
+        <div class="about-pills" id="aboutPills"></div>
+    </div>
+</section>
+
+<!-- Education -->
+<section class="sec" id="education">
+    <div class="reveal">
+        <div class="sec-label">Education</div>
+        <h2 class="sec-title">Academic Background</h2>
+    </div>
+    <div class="edu-grid reveal">
+        <div class="edu-card">
+            <div class="edu-deg">Master of Computer Science</div>
+            <div class="edu-school">Geetanjali Institute of Technical Studies (GITS), Udaipur</div>
+            <div class="edu-yr">2018 – 2021</div>
+        </div>
+        <div class="edu-card">
+            <div class="edu-deg">B.Tech in Computer Science</div>
+            <div class="edu-school">Sine International Institute of Technology, Jaipur</div>
+            <div class="edu-yr">2014 – 2018</div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="sec cta-sec" id="contact">
+    <div class="reveal">
+        <div class="sec-label" style="justify-content:center">Contact</div>
+        <h2 class="cta-title">Let's build something <span>useful.</span></h2>
+        <p class="cta-sub">For WordPress development, custom CMS work, integrations or website improvements — I'd love to hear from you.</p>
+        <div class="cta-btns">
+            <a href="mailto:ishasharma91981@gmail.com" class="cta-a cta-fill">
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                Get In Touch
+            </a>
+            <a href="https://www.linkedin.com/in/isha-sharma-a201ba11a/" target="_blank" rel="noopener noreferrer" class="cta-a cta-ghost">
+                <svg fill="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="foot">
+    <p>© 2025 Isha Sharma · Themes, plugins & the occasional late-night deploy</p>
+</footer>
+
+</main>
+</div>
+
+<script>
+/* ═══════════════════════════════════
+   DATA
+   ═══════════════════════════════════ */
+const TICKER = ['WordPress','Elementor','WooCommerce','ACF','PHP','JavaScript','HTML','CSS','Tailwind CSS','Bootstrap','Shopify','Divi','WPBakery','Beaver Builder','REST API','MySQL','Git','GitHub','SEO','Core Web Vitals'];
+
+const STACK = [
+    {name:'CMS & Platforms',items:['WordPress','Shopify','Craft CMS','WooCommerce','CMS Customization']},
+    {name:'WordPress',items:['Custom Themes','Custom Plugins','ACF','Custom Post Types','Taxonomies','ACF Blocks','Custom Widgets']},
+    {name:'Frontend',items:['HTML5','CSS3','JavaScript','Tailwind CSS','Bootstrap','Responsive Design']},
+    {name:'Backend & APIs',items:['PHP','MySQL','REST API','Third-Party API Integration']},
+    {name:'Builders',items:['Elementor','Divi','WPBakery','Beaver Builder']},
+    {name:'SEO & Performance',items:['Technical SEO','Core Web Vitals','Page Speed','Caching','Security']},
+    {name:'Hosting & Tools',items:['cPanel','SFTP / FTP','DNS','SSL','Migration','Git','GitHub','ClickUp','Slack']}
+];
+
+const PROJECTS = [
+    {name:'The Sleep Store',url:'https://thesleepstore.in/',platform:'Shopify',filter:'shopify',desc:'Sleep & wellness e-commerce store — full Shopify setup with product catalogue, collections and a calming brand experience.',tags:['Shopify','Theme Customisation','Collections']},
+    {name:'Ziyoori',url:'https://ziyoori.com/',platform:'Shopify',filter:'shopify',desc:'Fashion & lifestyle Shopify store — custom theme styling, product pages and streamlined checkout flow.',tags:['Shopify','Theme Customisation','Product Management']},
+    {name:'Storiies by PQ',url:'https://storiiesbypq.in/',platform:'Shopify',filter:'shopify',desc:'Artisan brand Shopify store — storytelling-led product pages, brand identity integration and mobile-first design.',tags:['Shopify','Theme Customisation','Branding']},
+    {name:'Tiles 4 Homes',url:'https://tiles4homes.co.uk/',platform:'WordPress / WooCommerce',filter:'woocommerce',desc:'Premium UK tile retailer — full WooCommerce store with product catalogue, custom filtering, payment gateway integration and mobile-optimised checkout.',tags:['WooCommerce','Elementor','Payment Gateway','ACF']},
+    {name:'House of Harakh',url:'https://houseofharakh.com/',platform:'WordPress / WooCommerce',filter:'woocommerce',desc:'Luxury jewellery brand with elegant WooCommerce shop, product showcase and custom theme styling.',tags:['WordPress','WooCommerce','Elementor']},
+    {name:'Serviots',url:'https://serviots.com/',platform:'WordPress',filter:'wordpress',desc:'IoT & tech services company — service pages, lead capture forms and performance-optimised responsive layout.',tags:['WordPress','Elementor','Custom Theme']},
+    {name:'Cybran Consult',url:'https://cybranconsult.com/',platform:'WordPress',filter:'wordpress',desc:'Cybersecurity consulting firm — corporate site with service listings, blog and client contact funnel.',tags:['WordPress','Divi','SEO']},
+    {name:'Kid Logics',url:'https://kidlogics.in/',platform:'WordPress / WooCommerce',filter:'woocommerce',desc:'EdTech platform for children — course listings, enrolment flow and parent-friendly accessible UI.',tags:['WordPress','Elementor','WooCommerce']},
+    {name:'Zaika Delhi 6',url:'https://zaikadelhi6.com/',platform:'WordPress',filter:'wordpress',desc:'Restaurant brand site with menu showcase, online ordering integration and local SEO setup.',tags:['WordPress','Elementor','SEO']},
+    {name:'Nomadic Mart',url:'https://nomadicmart.com/',platform:'WooCommerce',filter:'woocommerce',desc:'E-commerce marketplace for travel & outdoor goods — full WooCommerce store with multi-category management.',tags:['WooCommerce','Elementor','ACF']},
+    {name:'Cernvict',url:'https://cernvict.com/',platform:'WordPress',filter:'wordpress',desc:'Tech startup landing site with bold visual design, feature sections and conversion-focused layout.',tags:['WordPress','Elementor','Custom CSS']},
+    {name:'Groow Institute',url:'https://groowinstitute.com/',platform:'WordPress',filter:'wordpress',desc:'Professional training institute — course catalogue, trainer profiles and integrated enquiry system.',tags:['WordPress','Divi','ACF']},
+    {name:'Ummaid Palace',url:'https://ummaidpalace.com/',platform:'WordPress',filter:'wordpress',desc:'Boutique heritage hotel — room listings, gallery, booking CTA and premium visual identity.',tags:['WordPress','Elementor','Custom Theme']},
+    {name:'Drop Table',url:'https://droptable.io/',platform:'WordPress',filter:'wordpress',desc:'SaaS / tech product site — clean UI, feature highlights and developer-focused content architecture.',tags:['WordPress','Custom Theme','SEO']},
+    {name:'Heartfull',url:'http://allservice.in.net/heartfull',platform:'WordPress',filter:'wordpress',desc:'Wellness & lifestyle brand micro-site with elegant typography, service sections and contact integration.',tags:['WordPress','Elementor']},
+    {name:'Build Infinite',url:'https://allservice.in.net/buildinfinite/',platform:'WordPress',filter:'wordpress',desc:'Construction & infrastructure company — project portfolio, service pages and enquiry forms.',tags:['WordPress','WPBakery','Custom CSS']},
+    {name:'Astro Guni',url:'https://astroguni.com/',platform:'WordPress / WooCommerce',filter:'woocommerce',desc:'Astrology & spiritual services platform — consultant profiles, service booking flow and blog integration.',tags:['WordPress','Elementor','WooCommerce']}
+];
+
+const EXP = [
+    {
+        co:'INSIDEA',
+        role:'WordPress Developer',
+        when:'July 2025 – Present',
+        where:'Remote',
+        work:[
+            'Develop and maintain custom WordPress websites, themes, plugins, and dynamic components.',
+            'Build custom solutions with PHP, ACF, CPT, JavaScript, HTML/CSS, Elementor, and modern web technologies.',
+            'Integrate REST APIs and third-party services across CMS and website projects.',
+            'Handle performance optimisation, troubleshooting, migrations, deployment, and ongoing maintenance.'
+        ]
+    },
+    {
+        co:'Penguin Peak Technologies Pvt. Ltd.',
+        role:'WordPress Developer',
+        when:'February 2024 – July 2025',
+        where:'Ahmedabad, Gujarat',
+        work:[
+            'Developed and maintained custom WordPress websites, themes, plugins, and reusable components.',
+            'Created custom CMS functionality using PHP, ACF, CPT, JavaScript, HTML/CSS, and Elementor.',
+            'Worked on REST API and third-party integrations for client projects.',
+            'Handled website optimisation, troubleshooting, migrations, deployment, and maintenance.'
+        ]
+    },
+    {
+        co:'IndiaNIC Infotech Limited',
+        role:'Software Engineer',
+        when:'August 2023 – January 2024',
+        where:'Ahmedabad, Gujarat',
+        work:[
+            'Developed and customised WordPress websites using PHP, ACF, Elementor, themes, and plugins.',
+            'Implemented custom post types, taxonomies, flexible content structures, and reusable components.',
+            'Worked with QA and UI teams on debugging, responsive development, SEO, and project delivery.'
+        ]
+    },
+    {
+        co:'MEPA Outsourcing LLP',
+        role:'Web Developer',
+        when:'April 2022 – July 2023',
+        where:'Ahmedabad, Gujarat',
+        work:[
+            'Developed responsive websites using WordPress, Elementor, HTML, CSS, JavaScript, and PHP.',
+            'Worked with Shopify, customised themes, and integrated third-party payment and tracking applications.',
+            'Handled website migrations, integrations, deployment, client support, and documentation.'
+        ]
+    },
+    {
+        co:'N2NAcers',
+        role:'Web Developer',
+        when:'January 2022 – April 2022',
+        where:'Ahmedabad, Gujarat',
+        work:[
+            'Developed responsive websites using Divi and Elementor with cross-browser compatibility.',
+            'Added ACF fields and custom widgets and supported FTP-based deployment and plugin setup.'
+        ]
+    },
+    {
+        co:'Techniverse Software Consulting Pvt. Ltd.',
+        role:'WordPress Developer',
+        when:'July 2021 – November 2021',
+        where:'Rajkot, Gujarat',
+        work:[
+            'Developed WordPress websites using Elementor, Tailwind CSS, custom themes, and ACF.',
+            'Implemented responsive layouts and structured content management solutions.'
+        ]
+    },
+    {
+        co:'Techneos Solutions Pvt. Ltd.',
+        role:'WordPress Developer',
+        when:'May 2021 – June 2021',
+        where:'Ahmedabad, Gujarat',
+        work:[
+            'Developed and launched WordPress websites and customised themes according to client requirements.',
+            'Worked on frontend implementation, website customisation, and ongoing improvements.'
+        ]
+    }
+];
+
+const ABOUT_SKILLS = ['Custom WordPress Development','Custom Themes','Custom Plugins','ACF','Custom Post Types','Elementor','WooCommerce','API Integrations','Responsive Development','SEO','Performance Optimisation','Website Migrations','Troubleshooting','Deployment','Maintenance'];
+
+/* ═══════════════════════════════════
+   RENDER
+   ═══════════════════════════════════ */
+function renderTicker(){
+    const el=document.getElementById('ticker');
+    const html=TICKER.map(t=>`<span class="ticker-item"><span class="ticker-dot"></span>${t}</span>`).join('');
+    el.innerHTML=html+html;
+}
+
+function renderTech(){
+    document.getElementById('techGrid').innerHTML=STACK.map(s=>`
+        <div class="tech-card reveal">
+            <h4>${s.name}</h4>
+            <div class="tech-pills">${s.items.map(i=>`<span class="tech-pill">${i}</span>`).join('')}</div>
+        </div>`).join('');
+}
+
+function renderFilters(){
+    const counts={all:PROJECTS.length,wordpress:0,woocommerce:0,shopify:0};
+    PROJECTS.forEach(p=>counts[p.filter]++);
+    const ff=[{l:'All',v:'all'},{l:'WordPress',v:'wordpress'},{l:'WooCommerce',v:'woocommerce'},{l:'Shopify',v:'shopify'}];
+    document.getElementById('filters').innerHTML=ff.map(f=>`<button class="f-btn${f.v==='all'?' on':''}" data-f="${f.v}" aria-pressed="${f.v==='all'}">${f.l}<span class="f-cnt">${counts[f.v]}</span></button>`).join('');
+}
+
+function renderProjects(){
+    const g=document.getElementById('pGrid');
+    g.innerHTML=PROJECTS.map(p=>{
+        const domain=p.url.replace(/^https?:\/\//,'').replace(/\/$/,'');
+        return`<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="p-card reveal" data-f="${p.filter}">
+            <div class="p-card-inner">
+                <div class="p-top">
+                    <span class="p-platform">${p.platform}</span>
+                    <span class="p-live"><span class="p-live-dot"></span>LIVE</span>
+                </div>
+                <h3 class="p-name">${p.name}</h3>
+                <p class="p-desc">${p.desc}</p>
+                <div class="p-tags">${p.tags.map(t=>`<span class="p-tag">${t}</span>`).join('')}</div>
+            </div>
+            <div class="p-foot">
+                <span class="p-url">${domain}</span>
+                <span class="p-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></span>
+            </div>
+        </a>`}).join('');
+}
+
+function renderExp(){
+    document.getElementById('expList').innerHTML=EXP.map((e,index)=>`
+        <article class="exp">
+            <div class="exp-marker">${String(index+1).padStart(2,'0')}</div>
+            <div class="exp-content">
+                <div class="exp-head">
+                    <div>
+                        <div class="exp-company">${e.co}</div>
+                        <div class="exp-role">${e.role}</div>
+                    </div>
+                    <span class="exp-index">${String(index+1).padStart(2,'0')}</span>
+                </div>
+
+                <div class="exp-meta">
+                    <span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
+                        </svg>
+                        ${e.when}
+                    </span>
+                    <span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                        </svg>
+                        ${e.where}
+                    </span>
+                </div>
+
+                <div class="exp-work">
+                    <div class="exp-work-label">What I worked on</div>
+                    <ul>${e.work.map(item=>`<li>${item}</li>`).join('')}</ul>
+                </div>
+            </div>
+        </article>`).join('');
+}
+
+function renderAbout(){
+    document.getElementById('aboutPills').innerHTML=ABOUT_SKILLS.map(s=>`<span class="about-pill">${s}</span>`).join('');
+}
+
+/* ═══════════════════════════════════
+   THEME
+   ═══════════════════════════════════ */
+const moonPath='M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z';
+const sunPath='M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z';
+
+function setTheme(t){
+    document.documentElement.setAttribute('data-theme',t);
+    localStorage.setItem('isha-theme',t);
+    document.getElementById('themeLabel').textContent=t==='dark'?'Dark Mode':'Light Mode';
+    document.getElementById('themeIcon').innerHTML=`<path stroke-linecap="round" stroke-linejoin="round" d="${t==='dark'?moonPath:sunPath}"/>`;
+}
+
+function initTheme(){
+    const saved=localStorage.getItem('isha-theme');
+    if(saved){setTheme(saved);return}
+    const prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(prefersDark?'dark':'light');
+}
+
+/* ═══════════════════════════════════
+   FILTERS
+   ═══════════════════════════════════ */
+function initFilters(){
+    document.getElementById('filters').addEventListener('click',e=>{
+        const btn=e.target.closest('.f-btn');
+        if(!btn)return;
+        const f=btn.dataset.f;
+        document.querySelectorAll('.f-btn').forEach(b=>{b.classList.remove('on');b.setAttribute('aria-pressed','false')});
+        btn.classList.add('on');btn.setAttribute('aria-pressed','true');
+        document.querySelectorAll('.p-card').forEach(c=>{
+            c.classList.toggle('hide',f!=='all'&&c.dataset.f!==f);
+        });
+    });
+}
+
+/* ═══════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════ */
+function initReveal(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
+        return;
+    }
+    const obs=new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}});
+    },{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+/* ═══════════════════════════════════
+   MOBILE MENU
+   ═══════════════════════════════════ */
+function initMobile(){
+    const btn=document.getElementById('mobBtn');
+    const sidebar=document.getElementById('sidebar');
+    const overlay=document.getElementById('overlay');
+    const close=()=>{sidebar.classList.remove('open');overlay.classList.remove('on');document.body.style.overflow=''};
+    btn.addEventListener('click',()=>{sidebar.classList.add('open');overlay.classList.add('on');document.body.style.overflow='hidden'});
+    overlay.addEventListener('click',close);
+    sidebar.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(window.innerWidth<=900)close()}));
+}
+
+/* ═══════════════════════════════════
+   INIT
+   ═══════════════════════════════════ */
+function initPortfolio(){
+    renderTicker();
+    renderTech();
+    renderFilters();
+    renderProjects();
+    renderExp();
+    renderAbout();
+    initTheme();
+    initFilters();
+    initMobile();
+
+    const themeBtn=document.getElementById('themeBtn');
+    if(themeBtn){
+        themeBtn.addEventListener('click',()=>{
+            const cur=document.documentElement.getAttribute('data-theme');
+            setTheme(cur==='dark'?'light':'dark');
+        });
+    }
+
+    // Keep content visible even if IntersectionObserver is unavailable.
+    if('IntersectionObserver' in window){
+        requestAnimationFrame(()=>requestAnimationFrame(initReveal));
+    }else{
+        document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
+    }
+}
+
+if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded',initPortfolio,{once:true});
+}else{
+    initPortfolio();
+}
+
+const colorScheme=window.matchMedia('(prefers-color-scheme: dark)');
+if(colorScheme.addEventListener){
+    colorScheme.addEventListener('change',e=>{
+        if(!localStorage.getItem('isha-theme'))setTheme(e.matches?'dark':'light');
+    });
+}
+</script>
+
+</body>
+</html>
