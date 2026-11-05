@@ -738,45 +738,64 @@ h1, h2, h3, h4, h5, h6 {
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     background: var(--bg-surface);
-    padding: 16px 0;
+    padding: 14px 0;
     overflow: hidden;
     position: relative;
+    z-index: 10;
 }
 
+.marquee-container,
 .marquee-wrapper {
     display: flex;
     align-items: center;
+    gap: 20px;
     width: 100%;
+    max-width: 100%;
+    padding: 0 24px;
     position: relative;
-    overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
 }
 
+/* 100% Solid Static Label - Pinned on the left, completely opaque so no skills can override it */
+.marquee-static-label,
 .marquee-fixed-tag {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding-right: 24px;
-    margin-right: 12px;
-    border-right: 1px solid var(--border);
+    gap: 9px;
+    padding: 9px 18px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-full);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     font-weight: 800;
-    color: var(--accent);
+    color: var(--accent-light);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     white-space: nowrap;
     flex-shrink: 0;
-    z-index: 2;
+    position: relative;
+    z-index: 20;
+    box-shadow: 6px 0 20px rgba(0, 0, 0, 0.5);
+    margin: 0;
 }
 
+.marquee-static-label .live-beacon,
 .marquee-fixed-tag .live-beacon {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--emerald);
-    box-shadow: 0 0 8px var(--emerald);
+    box-shadow: 0 0 10px var(--emerald);
+    flex-shrink: 0;
+}
+
+/* Completely isolated scrolling viewport: Skills NEVER leave this container and fade out before reaching label */
+.marquee-scroll-viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 35px, #000 calc(100% - 35px), transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 35px, #000 calc(100% - 35px), transparent 100%);
 }
 
 .marquee-track {
@@ -784,6 +803,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     width: max-content;
     animation: continuousMarquee 38s linear infinite;
+    will-change: transform;
 }
 
 .marquee-track:hover {
