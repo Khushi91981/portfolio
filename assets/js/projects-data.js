@@ -5,27 +5,6 @@
 
 const PROJECTS_DATA = [
     {
-        id: 'the-sleep-store',
-        name: 'The Sleep Store',
-        url: 'https://thesleepstore.in/',
-        domain: 'thesleepstore.in',
-        platform: 'Shopify',
-        category: 'shopify',
-        featured: true,
-        desc: 'Sleep & wellness direct-to-consumer e-commerce brand. Engineered complete Shopify setup featuring structured product catalogue, collections filtering, and an ultra-calm brand experience.',
-        tags: ['Shopify', 'Liquid', 'Theme Customization', 'Collections', 'E-Commerce'],
-        caseStudy: {
-            overview: 'The Sleep Store required a soothing, minimalist e-commerce presence that aligned with their sleep-enhancement products while providing frictionless navigation from product discovery to checkout.',
-            platform: 'Shopify (Custom Liquid Theme Customization)',
-            contributions: [
-                'Engineered bespoke product page templates with rich media support and accordion ingredient breakdowns.',
-                'Implemented collection filtering based on firmness, material composition, and sleeping styles.',
-                'Streamlined the mobile cart drawer and one-page checkout funnel to minimize cart abandonment.'
-            ],
-            customFunctionality: 'Custom variant selectors, dynamic sleep consultation enquiry modal, and speed-optimized responsive image sets.'
-        }
-    },
-    {
         id: 'tiles-4-homes',
         name: 'Tiles 4 Homes',
         url: 'https://tiles4homes.co.uk/',
@@ -149,27 +128,6 @@ const PROJECTS_DATA = [
                 'Ensured WCAG accessibility compliance with clear font contrast and high-legibility touch targets.'
             ],
             customFunctionality: 'Automated batch capacity counter, trial class scheduler, and parent account dashboard.'
-        }
-    },
-    {
-        id: 'nomadic-mart',
-        name: 'Nomadic Mart',
-        url: 'https://nomadicmart.com/',
-        domain: 'nomadicmart.com',
-        platform: 'WooCommerce',
-        category: 'woocommerce',
-        featured: false,
-        desc: 'E-commerce marketplace for travel & outdoor goods — full WooCommerce store with multi-category management.',
-        tags: ['WooCommerce', 'Elementor', 'ACF Pro', 'Inventory Filtering', 'Payment Gateway'],
-        caseStudy: {
-            overview: 'Outdoor gear marketplace offering hiking, camping, and expedition equipment across hundreds of product SKUs.',
-            platform: 'WooCommerce with ACF Pro & Custom Hooks',
-            contributions: [
-                'Configured robust multi-category faceted navigation for gear types, weather ratings, and gear weights.',
-                'Engineered custom WooCommerce checkout fields for expedition delivery logistics.',
-                'Optimized database queries for fast product catalog filtering during peak sale events.'
-            ],
-            customFunctionality: 'Gear recommendation engine based on destination altitude and custom customer reviews carousel.'
         }
     },
     {
