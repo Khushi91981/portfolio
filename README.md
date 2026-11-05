@@ -1,124 +1,75 @@
-# Isha Sharma — WordPress Developer Portfolio
+# Isha Sharma — Senior WordPress Developer & Engineer Portfolio
 
-A modern, responsive portfolio website for **Isha Sharma**, WordPress Developer.
+A modern, responsive portfolio engineered for **Isha Sharma** (Senior WordPress Developer, WordPress Engineer, WooCommerce & Shopify Specialist). Features the **Primary Full-Time Candidate Profile** (`index.html` / `job.html`) along with a dedicated **Freelance & Agency Portal** (`freelance.html`).
 
-## Live Portfolio
+---
 
-Once GitHub Pages is enabled, the website will be available at:
+## 📞 Contact Information
 
-```text
-https://YOURUSERNAME.github.io/
-```
+| Channel | Direct Phone & WhatsApp | Email | Target Audience |
+| :--- | :--- | :--- | :--- |
+| **Full-Time Engineering Roles** | **`+91 8560970064`** | `ishasharma91981@gmail.com` | Engineering Managers, HR & Hiring Teams |
+| **Freelance & Agency Client Work** | **`+91 6377090502`** | `ishasharma91981@gmail.com` | Founders, Brands & Agency Partners |
 
-## Features
+---
 
-- Premium responsive portfolio design
-- Dark / Light mode toggle
-- WordPress developer-focused presentation
-- Technical skills and tech stack
-- Professional experience
-- Education
-- Selected work / portfolio section
-- Portfolio filters:
-  - All
-  - WordPress
-  - WooCommerce
-  - Shopify
-- Clickable live project links
-- Responsive design for desktop, tablet and mobile
-- Smooth scrolling and hover animations
-- SEO-friendly page structure
+## 🌟 Architecture & Versions
 
-## Portfolio
+1. **`index.html` (Primary Full-Time Candidate Profile)**
+   - The primary landing page for all visitors and employers.
+   - Comprehensive candidate executive summary, verified 5+ years experience, and education (MCA & B.Tech).
+   - Interactive **Career Dossier** detailing 7 verified consultancies.
+   - **Architectural Competency Matrix** spanning WordPress Core, E-Commerce, Frontend, Backend OOP, Speed Tuning, and CMS Extensibility.
+   - 13 verified commercial projects with on-demand **Load More** pagination and interactive case study modal.
+   - Direct line: **`+91 8560970064`**.
+   - Includes 1-click header switcher to toggle directly to `freelance.html`.
 
-The portfolio includes selected public projects across:
+2. **`job.html` (Dedicated Candidate Mirror)**
+   - Mirror of the full-time candidate profile.
 
-- WordPress
-- WooCommerce
-- Shopify
-- Elementor
-- Divi
-- ACF
-- Custom themes
-- Custom plugins
-- API integrations
-- SEO and performance optimization
+3. **`freelance.html` (Dedicated Freelance & Agency Portal)**
+   - Tailored specifically for client proposals, custom theme conversions, WooCommerce storefronts, and white-label agency partnerships.
+   - Showcases both direct phone lines: Primary Freelance **`+91 6377090502`** and Corporate **`+91 8560970064`**.
 
-Some projects may be private or NDA-based and therefore are not displayed publicly.
+---
 
-## Repository Structure
+## 🔒 Original Backup Information
+
+The original repository is fully preserved:
+- **`backup_original/`**: Complete uncompressed original directory.
+- **`backup_original.zip`**: Compressed backup archive.
+
+---
+
+## 📁 Repository Structure
 
 ```text
 .
-├── index.html
-├── Isha-Sharma-Resume.pdf
-└── README.md
+├── index.html               # Primary Full-Time Candidate Portfolio (Classic Sovereign Sapphire)
+├── job.html                 # Dedicated Candidate Mirror (+91 8560970064)
+├── freelance.html           # Dedicated Freelancer & Agency Portal (+91 6377090502 & +91 8560970064)
+├── Resume.pdf               # Official resume document (downloadable directly)
+├── robots.txt               # Search engine crawler instructions
+├── sitemap.xml              # XML Sitemap for search indexing
+├── assets/
+│   ├── css/
+│   │   └── style.css        # Classic Sovereign Sapphire & Midnight Obsidian design system
+│   └── js/
+│       ├── projects-data.js # Structured data for 13 commercial projects with full case studies
+│       └── main.js          # Interactive engine: dossier, matrix, load-more, modal, theme toggle
+├── backup_original/         # Complete untouched backup of original repository
+├── backup_original.zip      # Compressed zip backup archive
+└── README.md                # Project documentation
 ```
 
-### Files
+---
 
-**`index.html`**  
-Main portfolio website.
+## 🌐 Deploy to GitHub Pages
 
-**`Isha-Sharma-Resume.pdf`**  
-Resume PDF. Upload your actual resume PDF using this exact filename so the Download Resume link can point to it.
-
-**`README.md`**  
-Project documentation.
-
-## Deploy with GitHub Pages
-
-1. Create a GitHub repository.
-2. Upload `index.html`, `README.md`, and `Isha-Sharma-Resume.pdf`.
-3. Open:
-
-```text
-Repository → Settings → Pages
-```
-
-4. Under **Build and deployment**, select:
-
-```text
-Source: Deploy from a branch
-Branch: main
-Folder: / (root)
-```
-
-5. Click **Save**.
-
-GitHub will publish the portfolio using the repository's GitHub Pages URL.
-
-## Recommended Repository Name
-
-For the cleanest personal portfolio URL, use:
-
-```text
-YOURUSERNAME.github.io
-```
-
-Then the website will be:
-
-```text
-https://YOURUSERNAME.github.io/
-```
-
-## Contact
-
-**Isha Sharma**
-
-- Email: ishasharma91981@gmail.com
-- Phone: +91 8560970064
-- LinkedIn: https://www.linkedin.com/in/isha-sharma-a201ba11a/
-- Location: Vadodara, Gujarat, India
-
-## Technologies
-
-- HTML5
-- CSS3
-- JavaScript
-- Responsive Design
-- GitHub Pages
-
-## License
-
-Personal portfolio project. Content, branding and professional information belong to Isha Sharma.
+1. Push to GitHub:
+   ```bash
+   git add .
+   git commit -m "Redesign portfolio: primary job profile, freelance portal, and classic royal sapphire aesthetic"
+   git push origin main
+   ```
+2. Enable GitHub Pages under **Repository Settings → Pages** (Deploy from `/` root of `main` branch).
